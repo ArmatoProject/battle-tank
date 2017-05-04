@@ -179,7 +179,7 @@ void drawBOARDSCORE(TankControl TANK){
 }
 void countLIFE(TankControl *TANK){
 
-    if (TANK->life < 4)
+    if (TANK->life < 5)
     {
         if (TANK->score == 1000)
         {
@@ -239,7 +239,7 @@ void drawBOARD(TankControl TANK, ItemControl ITEM){
 void walkBOARD(TankControl *TANK, ItemControl ITEM){
 
     drawBOARDSCORE(*TANK);
-    //countLIFE(&*TANK);
+    countLIFE(&*TANK);
     //drawBOARDLIFE(*TANK);
     drawBOARDITEM(ITEM);
 }
