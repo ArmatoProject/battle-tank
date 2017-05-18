@@ -779,7 +779,7 @@ void choiceLEVEL(){
 }
 void checkLEVEL(ItemControl ITEM, TankControl TANK, int level, int *loop){
 
-    if (ITEM.Brick == 350)
+    if (ITEM.Brick <= 350)
     {
         level+=1;
         *loop=0;
@@ -1467,6 +1467,7 @@ void PAUSE(int *loop){
             case LEFT :
                 {
                     choice-=1;
+                    PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                     if (choice == 0)
                     {
                         choice = 3;
@@ -1475,21 +1476,18 @@ void PAUSE(int *loop){
                     {
                     case 1 :
                         {
-                            PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                             readimagefile("asset/Image/Button/REPLAY.bmp", 645, 490, 705, 520);
                             readimagefile("asset/Image/Button/CHOOSERESUME.bmp", 560, 490, 620, 520);
                             break;
                         }
                     case 2 :
                         {
-                            PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                             readimagefile("asset/Image/Button/EXIT.bmp", 730, 490, 780, 520);
                             readimagefile("asset/Image/Button/CHOOSEREPLAY.bmp", 645, 490, 705, 520);
                             break;
                         }
                     case 3 :
                         {
-                            PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                             readimagefile("asset/Image/Button/RESUME.bmp", 560, 490, 620, 520);
                             readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 730, 490, 780, 520);
                             break;
@@ -1500,6 +1498,7 @@ void PAUSE(int *loop){
             case RIGHT :
                 {
                     choice+=1;
+                    PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                     if (choice == 4)
                     {
                         choice = 1;
@@ -1508,21 +1507,18 @@ void PAUSE(int *loop){
                     {
                     case 1 :
                         {
-                            PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                             readimagefile("asset/Image/Button/EXIT.bmp", 730, 490, 780, 520);
                             readimagefile("asset/Image/Button/CHOOSERESUME.bmp", 560, 490, 620, 520);
                             break;
                         }
                     case 2 :
                         {
-                            PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                             readimagefile("asset/Image/Button/RESUME.bmp", 560, 490, 620, 520);
                             readimagefile("asset/Image/Button/CHOOSEREPLAY.bmp", 645, 490, 705, 520);
                             break;
                         }
                     case 3 :
                         {
-                            PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                             readimagefile("asset/Image/Button/REPLAY.bmp", 645, 490, 705, 520);
                             readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 730, 490, 780, 520);
                             break;
@@ -1533,6 +1529,7 @@ void PAUSE(int *loop){
             case ENTER :
                 {
                     PlaySound(TEXT("asset/Sound/select.wav"), NULL, SND_ASYNC);
+                    fflush(stdin);
                     switch(choice)
                     {
                     case 1 :
@@ -1540,13 +1537,11 @@ void PAUSE(int *loop){
                             *loop = 1;
                             readimagefile("asset/Image/Button/STATUSPLAY.bmp", 560, 420, 780, 470);
                             readimagefile("asset/Image/Button/REPLACEPAUSE.bmp", 560, 490, 780, 550);
-                            fflush(stdin);
                             break;
                         }
                     case 2 :
                         {
                             *loop = 0;
-                            fflush(stdin);
                             cleardevice();
                             choiceLEVEL();
                             break;
@@ -1554,7 +1549,6 @@ void PAUSE(int *loop){
                     case 3 :
                         {
                            *loop = 0;
-                            fflush(stdin);
                             cleardevice();
                             OPEN();
                         }
@@ -1565,12 +1559,19 @@ void PAUSE(int *loop){
         }
     }
 }
+void drawchooseReplay(){
+    readimagefile("asset/Image/Button/CHOOSEREPLAY.bmp", 330, 300, 390, 330);
+    readimagefile("asset/Image/Button/EXIT.bmp", 410, 300, 460, 330);
+}
+void drawchooseExitmenu(){
+    readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 410, 300, 460, 330);
+    readimagefile("asset/Image/Button/REPLAY.bmp", 330, 300, 390, 330);
+}
 void GAMEOVER(){
 
     readimagefile("asset/Image/GAME OVER.bmp", 100, 100, 700, 300);
     //BUTTON
-    readimagefile("asset/Image/Button/CHOOSEREPLAY.bmp", 330, 300, 390, 330);
-    readimagefile("asset/Image/Button/EXIT.bmp", 410, 300, 460, 330);
+    drawchooseReplay();
     int choice = 1;
     int KEY;
     while (true)
@@ -1583,6 +1584,7 @@ void GAMEOVER(){
                 case LEFT :
                     {
                         choice-=1;
+                        PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                         if (choice == 0)
                         {
                             choice = 2;
@@ -1591,14 +1593,12 @@ void GAMEOVER(){
                         {
                         case 1 :
                             {
-                                readimagefile("asset/Image/Button/EXIT.bmp", 410, 300, 460, 330);
-                                readimagefile("asset/Image/Button/CHOOSEREPLAY.bmp", 330, 300, 390, 330);
+                                drawchooseReplay();
                                 break;
                             }
                         case 2 :
                             {
-                                readimagefile("asset/Image/Button/REPLAY.bmp", 330, 300, 390, 330);
-                                readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 410, 300, 460, 330);
+                                drawchooseExitmenu();
                                 break;
                             }
                         }
@@ -1607,23 +1607,21 @@ void GAMEOVER(){
                 case RIGHT :
                     {
                         choice+=1;
+                        PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                         if (choice == 3)
                         {
                             choice = 1;
                         }
                         switch (choice)
                         {
-                        case 2 :
-                            {
-                                readimagefile("asset/Image/Button/REPLAY.bmp", 330, 300, 390, 330);
-                                readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 410, 300, 460, 330);
-                                break;
-                            }
                         case 1 :
                             {
-
-                                readimagefile("asset/Image/Button/EXIT.bmp", 410, 300, 460, 330);
-                                readimagefile("asset/Image/Button/CHOOSEREPLAY.bmp", 330, 300, 390, 330);
+                                drawchooseReplay();
+                                break;
+                            }
+                        case 2 :
+                            {
+                                drawchooseExitmenu();
                                 break;
                             }
                         }
@@ -1631,19 +1629,18 @@ void GAMEOVER(){
                     }
                 case ENTER :
                     {
+                        PlaySound(TEXT("asset/Sound/select.wav"), NULL, SND_ASYNC);
+                        fflush(stdin);
+                        cleardevice();
                         switch (choice)
                         {
                         case 1 :
                             {
-                                fflush(stdin);
-                                cleardevice();
                                 choiceLEVEL();
                                 break;
                             }
                         case 2 :
                             {
-                                fflush(stdin);
-                                cleardevice();
                                 OPEN();
                                 break;
                             }
@@ -1779,14 +1776,15 @@ void OPEN(){
 
     while (true)
     {
-        if (kbhit()) //baca keyboard
+        if (kbhit())
         {
-            KEY = getch(); //baca input keyboard di masukkan ke key
+            KEY = getch();
             switch (KEY)
             {
                 case UP :
                     {
-                        choice-=1; //choice dikuranng 1
+                        choice-=1;
+                        PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                         if (choice == 0)
                         {
                             choice = 4;
@@ -1795,30 +1793,26 @@ void OPEN(){
                         {
                         case 1 :
                             {
-                                PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/HOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEPLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
+                                readimagefile("asset/Image/Button/CHOOSEPLAY.bmp", 375, 300, 425, 330);
+                                readimagefile("asset/Image/Button/HOWTOPLAY.bmp", 345, 340, 455, 370);
                                 break;
                             }
                         case 2 :
                             {
-                                PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/HIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEHOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
+                                readimagefile("asset/Image/Button/CHOOSEHOWTOPLAY.bmp", 345, 340, 455, 370);
+                                readimagefile("asset/Image/Button/HIGHSCORE.bmp", 345, 380, 455, 410);
                                 break;
                             }
                         case 3 :
                             {
-                                PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/EXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEHIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
+                                readimagefile("asset/Image/Button/CHOOSEHIGHSCORE.bmp", 345, 380, 455, 410);
+                                readimagefile("asset/Image/Button/EXIT.bmp", 375, 420, 425, 450);
                                 break;
                             }
                         case 4 :
                             {
-                                PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/PLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
+                                readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 375, 420, 425, 450);
+                                readimagefile("asset/Image/Button/PLAY.bmp", 375, 300, 425, 330);
                                 break;
                             }
                         }
@@ -1826,7 +1820,8 @@ void OPEN(){
                     }
                 case DOWN :
                     {
-                        choice+=1; //choice ditambah 1
+                        choice+=1;
+                        PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC);
                         if (choice == 5)
                         {
                             choice = 1;
@@ -1835,30 +1830,26 @@ void OPEN(){
                         {
                         case 1 :
                             {
-                                PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/EXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEPLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
+                                readimagefile("asset/Image/Button/CHOOSEPLAY.bmp", 375, 300, 425, 330);
+                                readimagefile("asset/Image/Button/EXIT.bmp", 375, 420, 425, 450);
                                 break;
                             }
                         case 2 :
                             {
-                                PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/PLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEHOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
+                                readimagefile("asset/Image/Button/CHOOSEHOWTOPLAY.bmp", 345, 340, 455, 370);
+                                readimagefile("asset/Image/Button/PLAY.bmp", 375, 300, 425, 330);
                                 break;
                             }
                         case 3 :
                             {
-                                PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/HOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEHIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
+                                readimagefile("asset/Image/Button/CHOOSEHIGHSCORE.bmp", 345, 380, 455, 410);
+                                readimagefile("asset/Image/Button/HOWTOPLAY.bmp", 345, 340, 455, 370);
                                 break;
                             }
                         case 4 :
                             {
-                                PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/HIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
+                                readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 375, 420, 425, 450);
+                                readimagefile("asset/Image/Button/HIGHSCORE.bmp", 345, 380, 455, 410);
                                 break;
                             }
                         }
@@ -1866,35 +1857,29 @@ void OPEN(){
                     }
                 case ENTER :
                     {
-                        PlaySound(TEXT("asset/Sound/select.wav"), NULL, SND_ASYNC); //efek suara
+                        PlaySound(TEXT("asset/Sound/select.wav"), NULL, SND_ASYNC);
+                        fflush(stdin);
+                        cleardevice();
                         switch (choice)
                         {
                         case 1 :
                             {
-                                fflush(stdin); //menghapus input key
-                                cleardevice(); //menghapus tampilan sebelumnya
-                                choiceLEVEL(); //memanggil modul Play
+                                choiceLEVEL();
                                 break;
                             }
                         case 2 :
                             {
-                                fflush(stdin); //menghapus input key
-                                cleardevice(); //menghapus tampilan sebelumnya
-                                HOWTOPLAY(); //memanggil modul How To Play
+                                HOWTOPLAY();
                                 break;
                             }
                         case 3 :
                             {
-                                fflush(stdin); //menghapus input key
-                                cleardevice(); //menghapus tampilan sebelumnya
-                                HIGHSCORE(); //memanggil modul Open
+                                HIGHSCORE();
                                 break;
                             }
                         case 4 :
                             {
-                                fflush(stdin); //menghapus input key
-                                cleardevice(); //menghapus tampilan sebelumnya
-                                EXITGAME(); //memanggil modul Exit Game
+                                EXITGAME();
                                 break;
                             }
                         }
@@ -1916,21 +1901,20 @@ void HOWTOPLAY(){
             KEY = getch();
             if (KEY == ENTER)
             {
-                PlaySound(TEXT("asset/Sound/select.wav"), NULL, SND_ASYNC); //efek suara
+                PlaySound(TEXT("asset/Sound/select.wav"), NULL, SND_ASYNC);
+                fflush(stdin);
+                cleardevice();
                 switch(choice)
                 {
                 case 1 :
                     {
-                        cleardevice();
-                        readimagefile("asset/Image/CONTROL.bmp", 0, 0, 800, 600); //kiri, atas, kanan,bawah
+                        readimagefile("asset/Image/CONTROL.bmp", 0, 0, 800, 600);
                         choice+=1;
                         break;
                     }
                 case 2 :
                     {
-                        fflush(stdin); //menghapus input key
-                        cleardevice(); //menghapus tampilan sebelumnya
-                        OPEN(); //memanggil modul open
+                        OPEN();
                         break;
                     }
 
@@ -1977,13 +1961,20 @@ void HIGHSCORE(){
         }
     }
 }
+void drawchooseNO(){
+    readimagefile("asset/Image/Button/CHOOSENO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/YES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
+}
+void drawchooseYES(){
+    readimagefile("asset/Image/Button/CHOOSEYES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/NO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
+}
 void EXITGAME(){
 
     int choice = 1;
     int KEY;
     outtextxy(340, 300, "( ARE YOU SURE ? )"); //x,y,texr
-    readimagefile("asset/Image/Button/CHOOSENO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
-    readimagefile("asset/Image/Button/YES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
+    drawchooseNO();
 
     while (true)
     {
@@ -2004,15 +1995,13 @@ void EXITGAME(){
                         case 1 :
                             {
                                 PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/YES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSENO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
+                                drawchooseNO();
                                 break;
                             }
                         case 2 :
                             {
                                 PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/CHOOSEYES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/NO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
+                                drawchooseYES();
                                 break;
                             }
                         }
@@ -2030,15 +2019,13 @@ void EXITGAME(){
                         case 1 :
                             {
                                 PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/YES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSENO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
+                                drawchooseNO();
                                 break;
                             }
                         case 2 :
                             {
                                 PlaySound(TEXT("asset/Sound/pilih.wav"), NULL, SND_ASYNC); //efek suara
-                                readimagefile("asset/Image/Button/NO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
-                                readimagefile("asset/Image/Button/CHOOSEYES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
+                                drawchooseYES();
                                 break;
                             }
                         }
@@ -2046,20 +2033,20 @@ void EXITGAME(){
                     }
                 case ENTER :
                     {
-                        PlaySound(TEXT("asset/Sound/select.wav"), NULL, SND_ASYNC); //efek suara
+                        PlaySound(TEXT("asset/Sound/select.wav"), NULL, SND_ASYNC);
                         switch (choice)
                         {
                         case 1 :
                             {
-                                fflush(stdin); //menghapus input key
-                                cleardevice(); //menghapus tampilan
-                                OPEN(); //memanggil modul open
+                                fflush(stdin);
+                                cleardevice();
+                                OPEN();
                                 break;
                             }
                         case 2 :
                             {
-                                cleardevice(); //menghapus tampilan
-                                exit(0); //keluar dari tampilan
+                                cleardevice();
+                                exit(0);
                                 break;
                             }
                         }
