@@ -399,4 +399,17 @@ void EXITGAME();
 /*IS : Program masih dijalankan*/
 /*FS : Program di close*/
 
+void MENU();
+void cursorMENU();
+void choiceMENU();
+void EXIT();
+void cursorEXIT();
+void choiceEXIT();
+
+void choosePLAY();
+void chooseHOWTOPLAY();
+void chooseHIGHSCORE();
+void chooseEXIT();
+
+
 #endif // Tank_h
