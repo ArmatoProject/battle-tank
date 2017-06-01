@@ -15,7 +15,7 @@ void drawSTEEL(int Row, int Colom){
     Colom = Colom*Item;
     readimagefile("asset/Image/Item/Steel 15x15.bmp", Colom+20, Row+45, Colom+Item+20, Row+Item+45);
 }
-void drawSTEEL2(int Row, int Colom){
+void drawSTEEL2(int Row, int Colom){ //Replace
 
     Row = Row*Item;
     Colom = Colom*Item;
@@ -27,7 +27,7 @@ void drawBUSH(int Row, int Colom){
     Colom = Colom*Item;
     readimagefile("asset/Image/Item/Bush 15x15.bmp", Colom+20, Row+45, Colom+Item+20, Row+Item+45);
 }
-void drawBUSH2(int Row, int Colom){
+void drawBUSH2(int Row, int Colom){ //Replace
 
     Row = Row*Item;
     Colom = Colom*Item;
@@ -39,7 +39,7 @@ void drawWATER(int Row, int Colom){
     Colom = Colom*Item;
     readimagefile("asset/Image/Item/Water 15x15.bmp", Colom+20, Row+45, Colom+Item+20, Row+Item+45);
 }
-void drawWATER2(int Row, int Colom){
+void drawWATER2(int Row, int Colom){ // Replace
 
     Row = Row*Item;
     Colom = Colom*Item;
@@ -907,6 +907,7 @@ void PLAY(int level, TankControl TANK){
                         map[RowPel-IndexPel][ColomPel+1] = 0;
                         drawROAD(RowPel-IndexPel, ColomPel);
                         drawROAD(RowPel-IndexPel, ColomPel+1);
+
                         ITEM.Brick-=2;
                         TANK.score+=10;
                         DOOR = 0;
