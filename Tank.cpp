@@ -67,6 +67,14 @@ void createMAP(int level, int *CrRow, int *CrColom, int *Row, int *Colom){
 		    {
 		        case 1 : { map[RowX][ColomY] = level1[RowX][ColomY]; break;}
                 case 2 : { map[RowX][ColomY] = level2[RowX][ColomY]; break;}
+                case 3 : { map[RowX][ColomY] = level3[RowX][ColomY]; break;}
+                case 4 : { map[RowX][ColomY] = level4[RowX][ColomY]; break;}
+                case 5 : { map[RowX][ColomY] = level5[RowX][ColomY]; break;}
+                case 6 : { map[RowX][ColomY] = level6[RowX][ColomY]; break;}
+                case 7 : { map[RowX][ColomY] = level7[RowX][ColomY]; break;}
+                case 8 : { map[RowX][ColomY] = level8[RowX][ColomY]; break;}
+                case 9 : { map[RowX][ColomY] = level9[RowX][ColomY]; break;}
+                case 10 : { map[RowX][ColomY] = level10[RowX][ColomY]; break;}
 		    }
 		}
     }
@@ -77,7 +85,7 @@ void createMAP(int level, int *CrRow, int *CrColom, int *Row, int *Colom){
                 *CrRow = 31;
                 *CrColom = 16;
                 *Row = 31;
-                *Colom = 13;
+                *Colom = 11;
                 break;
             }
         case 2 :
@@ -86,6 +94,70 @@ void createMAP(int level, int *CrRow, int *CrColom, int *Row, int *Colom){
                 *CrColom = 11;
                 *Row = 31;
                 *Colom = 15;
+                break;
+            }
+        case 3 :
+            {
+                *CrRow = 32;
+                *CrColom = 2;
+                *Row = 32;
+                *Colom = 14;
+                break;
+            }
+        case 4 :
+            {
+                *CrRow = 32;
+                *CrColom = 14;
+                *Row = 32;
+                *Colom = 20;
+                break;
+            }
+        case 5 :
+            {
+                *CrRow = 32;
+                *CrColom = 32;
+                *Row = 28;
+                *Colom = 32;
+                break;
+            }
+        case 6 :
+            {
+                *CrRow = 32;
+                *CrColom = 17;
+                *Row = 27;
+                *Colom = 17;
+                break;
+            }
+        case 7 :
+            {
+                *CrRow = 32;
+                *CrColom = 17;
+                *Row = 30;
+                *Colom = 9;
+                break;
+            }
+        case 8 :
+            {
+                *CrRow = 30;
+                *CrColom = 17;
+                *Row = 26;
+                *Colom = 17;
+                break;
+            }
+        case 9 :
+            {
+                *CrRow = 2;
+                *CrColom = 2;
+                *Row = 6;
+                *Colom = 2;
+                break;
+            }
+        case 10 :
+            {
+                *CrRow = 32;
+                *CrColom = 17;
+                *Row = 24;
+                *Colom = 17;
                 break;
             }
     }
