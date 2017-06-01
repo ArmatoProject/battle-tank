@@ -4,7 +4,7 @@
 
 main(){
     initwindow(WIDHTWINDOW, HEIGHTWINDOW, "Battle Tank");
-    //INTRO();
+    INTRO();
     OPEN();
     getch();
 }

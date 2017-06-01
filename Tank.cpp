@@ -779,7 +779,7 @@ void choiceLEVEL(){
 }
 void checkLEVEL(ItemControl ITEM, TankControl TANK, int level, int *loop){
 
-    if (ITEM.Brick <= 350)
+    if (ITEM.Brick == 500)
     {
         level+=1;
         *loop=0;
@@ -929,6 +929,19 @@ void PLAY(int level, TankControl TANK){
                         IndexPel = 0;
                         break;
                     }
+                    else if ((map[RowPel-IndexPel][ColomPel] == 1 and map[RowPel-IndexPel][ColomPel+1] == 0))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel-IndexPel][ColomPel] = 0;
+                        drawROAD(RowPel-IndexPel, ColomPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
                     else if ((map[RowPel-IndexPel][ColomPel] == 0 and map[RowPel-IndexPel][ColomPel+1] == 1))
                     {
                         delPeluru(Peluru);
@@ -942,6 +955,92 @@ void PLAY(int level, TankControl TANK){
                         IndexPel = 0;
                         break;
                     }
+                    /////////////////////////////////////////////////////////////////////////////////
+                    else if ((map[RowPel-IndexPel][ColomPel] == 1 and map[RowPel-IndexPel][ColomPel+1] == 5))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel-IndexPel][ColomPel] = 0;
+                        drawROAD(RowPel-IndexPel, ColomPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel-IndexPel][ColomPel] == 5 and map[RowPel-IndexPel][ColomPel+1] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel-IndexPel][ColomPel+1] = 0;
+                        drawROAD(RowPel-IndexPel, ColomPel+1);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel-IndexPel][ColomPel] == 1 and map[RowPel-IndexPel][ColomPel+1] == 2))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel-IndexPel][ColomPel] = 0;
+                        drawROAD(RowPel-IndexPel, ColomPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel-IndexPel][ColomPel] == 2 and map[RowPel-IndexPel][ColomPel+1] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel-IndexPel][ColomPel+1] = 0;
+                        drawROAD(RowPel-IndexPel, ColomPel+1);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                else if ((map[RowPel-IndexPel][ColomPel] == 0 and map[RowPel-IndexPel][ColomPel+1] == 2))
+                    {
+                        delPeluru(Peluru);
+                        drawSTEEL2(RowPel-IndexPel, ColomPel+1);
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                else if ((map[RowPel-IndexPel][ColomPel] == 2 and map[RowPel-IndexPel][ColomPel+1] == 0))
+                    {
+                        delPeluru(Peluru);
+                        drawSTEEL2(RowPel-IndexPel, ColomPel);
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                      else if ((map[RowPel-IndexPel][ColomPel] == 0 and map[RowPel-IndexPel][ColomPel+1] == 4))
+                    {
+                        replacePeluru(&Peluru);
+                        drawWATER2(RowPel-IndexPel, ColomPel+1);
+                        break;
+                    }
+                else if ((map[RowPel-IndexPel][ColomPel] == 4 and map[RowPel-IndexPel][ColomPel+1] == 0))
+                    {
+                        replacePeluru(&Peluru);
+                        drawWATER2(RowPel-IndexPel, ColomPel);
+                        break;
+                    }
+                    /////////////////////////////////////////////////////////////////////////////////
                     else if ((map[RowPel-IndexPel][ColomPel] == 1 and map[RowPel-IndexPel][ColomPel+1] == 3))
                     {
                         delPeluru(Peluru);
@@ -1084,6 +1183,119 @@ void PLAY(int level, TankControl TANK){
                         IndexPel = 0;
                         break;
                     }
+                    /////////////////////////////////////////////////////////////////////////
+                    else if ((map[RowPel+1+IndexPel][ColomPel] == 1 and map[RowPel+1+IndexPel][ColomPel+1] == 5))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1+IndexPel][ColomPel] = 0;
+                        drawROAD(RowPel+1+IndexPel, ColomPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel+1+IndexPel][ColomPel] == 5 and map[RowPel+1+IndexPel][ColomPel+1] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1+IndexPel][ColomPel+1] = 0;
+                        drawROAD(RowPel+1+IndexPel, ColomPel+1);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                else if ((map[RowPel+1+IndexPel][ColomPel] == 1 and map[RowPel+1+IndexPel][ColomPel+1] == 2))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1+IndexPel][ColomPel] = 0;
+                        drawROAD(RowPel+1+IndexPel, ColomPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                else if ((map[RowPel+1+IndexPel][ColomPel] == 2 and map[RowPel+1+IndexPel][ColomPel+1] == 0))
+                    {
+                        delPeluru(Peluru);
+                        drawSTEEL2(RowPel+1+IndexPel, ColomPel);
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                else if ((map[RowPel+1+IndexPel][ColomPel] == 0 and map[RowPel+1+IndexPel][ColomPel+1] == 2))
+                    {
+                        delPeluru(Peluru);
+                        drawSTEEL2(RowPel+1+IndexPel, ColomPel+1);
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                else if ((map[RowPel+1+IndexPel][ColomPel] == 4 and map[RowPel+1+IndexPel][ColomPel+1] == 0))
+                    {
+                        replacePeluru(&Peluru);
+                        drawWATER2(RowPel+1+IndexPel, ColomPel);
+                        break;
+                    }
+                else if ((map[RowPel+1+IndexPel][ColomPel] == 0 and map[RowPel+1+IndexPel][ColomPel+1] == 4))
+                    {
+                        replacePeluru(&Peluru);
+                        drawWATER2(RowPel+1+IndexPel, ColomPel+1);
+                        break;
+                    }
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////
+                    else if ((map[RowPel+1+IndexPel][ColomPel] == 1 and map[RowPel+1+IndexPel][ColomPel+1] == 0))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1+IndexPel][ColomPel] = 0;
+                        drawROAD(RowPel+1+IndexPel, ColomPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel+1+IndexPel][ColomPel] == 0 and map[RowPel+1+IndexPel][ColomPel+1] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1+IndexPel][ColomPel+1] = 0;
+                        drawROAD(RowPel+1+IndexPel, ColomPel+1);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel+1+IndexPel][ColomPel] == 2 and map[RowPel+1+IndexPel][ColomPel+1] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1+IndexPel][ColomPel+1] = 0;
+                        drawROAD(RowPel+1+IndexPel, ColomPel+1);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    //////////////////////////////////////////////////////////////////////////
                     else if ((map[RowPel+1+IndexPel][ColomPel] == 1 and map[RowPel+1+IndexPel][ColomPel+1] == 3))
                     {
                         delPeluru(Peluru);
@@ -1115,6 +1327,32 @@ void PLAY(int level, TankControl TANK){
                         delPeluru(Peluru);
                         map[RowPel+1+IndexPel][ColomPel] = 0;
                         drawROAD(RowPel+1+IndexPel, ColomPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel+1+IndexPel][ColomPel] == 1 and map[RowPel+1+IndexPel][ColomPel+1] == 0))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1+IndexPel][ColomPel] = 0;
+                        drawROAD(RowPel+1+IndexPel, ColomPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel+1+IndexPel][ColomPel] == 0 and map[RowPel+1+IndexPel][ColomPel+1] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1+IndexPel][ColomPel+1] = 0;
+                        drawROAD(RowPel+1+IndexPel, ColomPel+1);
                         ITEM.Brick-=1;
                         TANK.score+=5;
                         DOOR = 0;
@@ -1158,6 +1396,7 @@ void PLAY(int level, TankControl TANK){
                         DOOR = 0;
                         countPelVer = 0;
                         countPelHor = 0;
+                        break;
                         IndexPel = 0;
                         break;
                     }
@@ -1226,6 +1465,91 @@ void PLAY(int level, TankControl TANK){
                         IndexPel = 0;
                         break;
                     }
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
+                    else if ((map[RowPel][ColomPel+1+IndexPel] == 1 and map[RowPel+1][ColomPel+1+IndexPel] == 5))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel][ColomPel+1+IndexPel] = 0;
+                        drawROAD(RowPel, ColomPel+1+IndexPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel+1+IndexPel] == 5 and map[RowPel+1][ColomPel+1+IndexPel] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1][ColomPel+1+IndexPel] = 0;
+                        drawROAD(RowPel+1, ColomPel+1+IndexPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }else if ((map[RowPel][ColomPel+1+IndexPel] == 1 and map[RowPel+1][ColomPel+1+IndexPel] == 2))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel][ColomPel+1+IndexPel] = 0;
+                        drawROAD(RowPel, ColomPel+1+IndexPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel+1+IndexPel] == 2 and map[RowPel+1][ColomPel+1+IndexPel] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1][ColomPel+1+IndexPel] = 0;
+                        drawROAD(RowPel+1, ColomPel+1+IndexPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel+1+IndexPel] == 0 and map[RowPel+1][ColomPel+1+IndexPel] == 2))
+                    {
+                        delPeluru(Peluru);
+                        drawSTEEL2(RowPel+1, ColomPel+1+IndexPel);
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel+1+IndexPel] == 4 and map[RowPel+1][ColomPel+1+IndexPel] == 0))
+                    {
+                        replacePeluru(&Peluru);
+                        drawWATER2(RowPel, ColomPel+1+IndexPel);
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel+1+IndexPel] == 0 and map[RowPel+1][ColomPel+1+IndexPel] == 4))
+                    {
+                        replacePeluru(&Peluru);
+                        drawWATER2(RowPel+1, ColomPel+1+IndexPel);
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel+1+IndexPel] == 2 and map[RowPel+1][ColomPel+1+IndexPel] == 0))
+                    {
+                        delPeluru(Peluru);
+                        drawSTEEL2(RowPel, ColomPel+1+IndexPel);
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    ///////////////////////////////////////////////////////////////////////////////////////////////////////
                     else if ((map[RowPel][ColomPel+1+IndexPel] == 1 and map[RowPel+1][ColomPel+1+IndexPel] == 3))
                     {
                         delPeluru(Peluru);
@@ -1283,13 +1607,13 @@ void PLAY(int level, TankControl TANK){
                         delPeluru(Peluru);
                         drawSTEEL2(RowPel, ColomPel+1+IndexPel);
                         drawSTEEL2(RowPel+1, ColomPel+1+IndexPel);
-
                         DOOR = 0;
                         countPelVer = 0;
                         countPelHor = 0;
                         IndexPel = 0;
                         break;
-                    }else if ((map[RowPel][ColomPel+1+IndexPel] == 5 and map[RowPel+1][ColomPel+1+IndexPel] == 5))
+                    }
+                    else if ((map[RowPel][ColomPel+1+IndexPel] == 5 and map[RowPel+1][ColomPel+1+IndexPel] == 5))
                     {
                         delPeluru(Peluru);
                         loop = 0;
@@ -1430,6 +1754,91 @@ void PLAY(int level, TankControl TANK){
                         IndexPel = 0;
                         break;
                     }
+                    else if ((map[RowPel][ColomPel-IndexPel] == 1 and map[RowPel+1][ColomPel-IndexPel] == 2))//////////////////////////////////////////////////////////
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel][ColomPel-IndexPel] = 0;
+                        drawROAD(RowPel, ColomPel-IndexPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel-IndexPel] == 2 and map[RowPel+1][ColomPel-IndexPel] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1][ColomPel-IndexPel] = 0;
+                        drawROAD(RowPel+1, ColomPel-IndexPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel-IndexPel] == 1 and map[RowPel+1][ColomPel-IndexPel] == 5))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel][ColomPel-IndexPel] = 0;
+                        drawROAD(RowPel, ColomPel-IndexPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel-IndexPel] == 5 and map[RowPel+1][ColomPel-IndexPel] == 1))
+                    {
+                        delPeluru(Peluru);
+                        map[RowPel+1][ColomPel-IndexPel] = 0;
+                        drawROAD(RowPel+1, ColomPel-IndexPel);
+                        ITEM.Brick-=1;
+                        TANK.score+=5;
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel-IndexPel] == 2 and map[RowPel+1][ColomPel-IndexPel] == 0))
+                    {
+                        delPeluru(Peluru);
+                        drawSTEEL2(RowPel, ColomPel-IndexPel);
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel-IndexPel] == 0 and map[RowPel+1][ColomPel-IndexPel] == 2))
+                    {
+                        delPeluru(Peluru);
+                        drawSTEEL2(RowPel+1, ColomPel-IndexPel);
+                        DOOR = 0;
+                        countPelVer = 0;
+                        countPelHor = 0;
+                        IndexPel = 0;
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel-IndexPel] == 4 and map[RowPel+1][ColomPel-IndexPel] == 0))
+                    {
+                        replacePeluru(&Peluru);
+                        drawWATER2(RowPel, ColomPel-IndexPel);
+                        break;
+                    }
+                    else if ((map[RowPel][ColomPel-IndexPel] == 0 and map[RowPel+1][ColomPel-IndexPel] == 4))
+                    {
+                        replacePeluru(&Peluru);
+                        drawWATER2(RowPel+1, ColomPel-IndexPel);
+                        break;
+                    }
+                        //////////////////////////////////////////////;////////////////////////////////////////////////////////////////////////////////////////////
                     else if ((map[RowPel][ColomPel-IndexPel] == 5 and map[RowPel+1][ColomPel-IndexPel] == 5))
                     {
                         delPeluru(Peluru);
@@ -1652,29 +2061,89 @@ void GAMEOVER(){
         }
     }
 }
+
 /*OPERASI FILE*//*2*/
 void SAVESCORE(TankControl TANK){
 
+    int temp, arr[5];
 	FILE *SCORE;
 
 	if ((SCORE=fopen("asset/File/Score.dat", "ab+")) == NULL)
 	{
 		outtextxy(250, 300, "File tidak dapat dibuka");
 	}
+
+	temp=TANK.score;
+	SORTSCORE();
+
+//	while (!feof(SCORE))
+//	{
+	   	for(int i=1;i<6;i++)
+        {
+             fscanf(SCORE, "%d", &arr[i]);
+        }
+//	}
+
+	if (temp>arr[5])
+    {
+        arr[5]=temp;
+    }
+
+    SORTSCORE();
+
+//    while (!feof(SCORE))
+//	{
+	   	for(int i=1;i<6;i++)
+        {
+            fprintf(SCORE, " %d", arr[i]);
+        }
+//	}
+
     fflush(stdin);
-    fprintf(SCORE, " %d", TANK.score);
 	fclose(SCORE);
 }
-void SORTSCORE(){/*MASIH GAGAL...*/
+void SORTSCORE(){
 
     FILE *SCORE;
-	long i=0, j;
 	TankControl Tank, Temp;
+    int temp, arr[5];
 
 	if ((SCORE=fopen("asset/File/Score.dat", "rb+")) == NULL)
 	{
 		outtextxy(250, 300, "File tidak dapat dibuka");
 	}
+
+//    while (!feof(SCORE))
+//	{
+	   	for(int i=1;i<6;i++)
+        {
+             fscanf(SCORE, "%d", &arr[i]);
+        }
+//	}
+
+    for (int c=1;c<6;c++)
+    {
+        for (int d=0;d<6-c-1;d++)
+        {
+            if (arr[d] > arr[d+1])
+            {
+                temp     = arr[d];
+                arr[d]   = arr[d+1];
+                arr[d+1] = temp;
+            }
+        }
+    }
+
+//   while (!feof(SCORE))
+//	{
+	   	for(int i=1;i<6;i++)
+        {
+            fprintf(SCORE, " %d", arr[i]);
+        }
+//	}
+}
+/*
+	long i=0, j;
 
 	while (!feof(SCORE))
 	{
@@ -1703,9 +2172,9 @@ void SORTSCORE(){/*MASIH GAGAL...*/
 		}
 	}
 	fclose(SCORE);
-}
+*/
 /*User Interface*//*5*/
-void INTRO(){
+/*void INTRO(){
     int KEY;
 
     delay(1000);//1detik
@@ -1764,7 +2233,7 @@ void INTRO(){
         }
     }
 }
-void OPEN(){
+*/void OPEN(){
 
     readimagefile("asset/Image/LOGO1.bmp", 250, 50, 550, 250); //kiri, atas, kanan,bawah
     //BUTTON
