@@ -1651,29 +1651,91 @@ void GAMEOVER(){
         }
     }
 }
+
 /*OPERASI FILE*//*2*/
 void SAVESCORE(TankControl TANK){
 
+    int temp, arr[5];
 	FILE *SCORE;
 
 	if ((SCORE=fopen("asset/File/Score.dat", "ab+")) == NULL)
 	{
 		outtextxy(250, 300, "File tidak dapat dibuka");
 	}
+
+	temp=TANK.score;
+	SORTSCORE();
+
+	while (!feof(SCORE))
+	{
+	   	for(int i=1;i<6;i++)
+        {
+             fscanf(SCORE, "%d", &arr[i]);
+        }
+	}
+
+	if (temp>arr[5])
+    {
+        arr[5]=temp;
+    }
+
+    SORTSCORE();
+
+    while (!feof(SCORE))
+	{
+	   	for(int i=1;i<6;i++)
+        {
+            fprintf(SCORE, " %d", arr[i]);
+        }
+	}
+
     fflush(stdin);
-    fprintf(SCORE, " %d", TANK.score);
 	fclose(SCORE);
 }
-void SORTSCORE(){/*MASIH GAGAL...*/
+
+void SORTSCORE(){
 
     FILE *SCORE;
-	long i=0, j;
 	TankControl Tank, Temp;
+    int temp, arr[5];
 
 	if ((SCORE=fopen("asset/File/Score.dat", "rb+")) == NULL)
 	{
 		outtextxy(250, 300, "File tidak dapat dibuka");
 	}
+
+    while (!feof(SCORE))
+	{
+	   	for(int i=1;i<6;i++)
+        {
+             fscanf(SCORE, "%d", &arr[i]);
+        }
+	}
+
+    for (int c=1;c<6;c++)
+    {
+        for (int d=0;d<6-c-1;d++)
+        {
+            if (arr[d] > arr[d+1])
+            {
+                temp     = arr[d];
+                arr[d]   = arr[d+1];
+                arr[d+1] = temp;
+            }
+        }
+    }
+
+    while (!feof(SCORE))
+	{
+	   	for(int i=1;i<6;i++)
+        {
+            fprintf(SCORE, " %d", arr[i]);
+        }
+	}
+}
+
+/*
+	long i=0, j;
 
 	while (!feof(SCORE))
 	{
@@ -1702,7 +1764,8 @@ void SORTSCORE(){/*MASIH GAGAL...*/
 		}
 	}
 	fclose(SCORE);
-}
+*/
+
 /*User Interface*//*5*/
 void INTRO(){
     int KEY;
