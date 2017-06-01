@@ -2173,7 +2173,7 @@ void SORTSCORE(){
 	fclose(SCORE);
 */
 /*User Interface*//*5*/
-/*void INTRO(){
+void INTRO(){
     int KEY;
 
     delay(1000);//1detik
@@ -2232,7 +2232,123 @@ void SORTSCORE(){
         }
     }
 }
-*/void OPEN(){
+void choosePLAY(){
+    readimagefile("asset/Image/Button/CHOOSEPLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/HOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/HIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/EXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
+}
+void chooseHOWTOPLAY(){
+    readimagefile("asset/Image/Button/PLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/CHOOSEHOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/HIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/EXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
+}
+void chooseHIGHSCORE(){
+    readimagefile("asset/Image/Button/PLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/HOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/CHOOSEHIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/EXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
+}
+void chooseEXIT(){
+    readimagefile("asset/Image/Button/PLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/HOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/HIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/CHOOSEEXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
+}
+void MENU(){
+    readimagefile("asset/Image/LOGO1.bmp", 250, 50, 550, 250); //kiri, atas, kanan,bawah
+    //BUTTON
+    readimagefile("asset/Image/Button/PLAY.bmp", 375, 300, 425, 330); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/HOWTOPLAY.bmp", 345, 340, 455, 370); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/HIGHSCORE.bmp", 345, 380, 455, 410); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/EXIT.bmp", 375, 420, 425, 450); //kiri, atas, kanan,bawah
+}
+void cursorMENU(){
+	int x = -1;
+    int y = -1;
+    int HovX = -1;
+    int HovY = -1;
+
+	bool IsMouseClicked = false;
+    Pos :
+        x=-1,y=-1,HovY=-1,HovX=-1;
+        IsMouseClicked = !IsMouseClicked;
+
+        while (!IsMouseClicked &&(x==-1 || y==-1))
+        {
+            IsMouseClicked = ismouseclick(WM_LBUTTONUP);
+            getmouseclick(WM_LBUTTONDOWN,x,y);
+            getmouseclick(WM_MOUSEMOVE,HovX,HovY);
+
+            if ((HovX > 375 && HovX < 425) && (HovY > 300 && HovY < 330))
+            {
+                choosePLAY();
+            }
+            else if((HovX > 345 && HovX < 455) && (HovY > 340 && HovY < 370))
+            {
+                chooseHOWTOPLAY();
+            }
+            else if((HovX > 345 && HovX < 455)&&(HovY > 380 && HovY < 410))
+            {
+                chooseHIGHSCORE();
+            }
+            else if((HovX > 375 && HovX < 425)&&(HovY > 420 && HovY < 450))
+            {
+                chooseEXIT();
+            }
+        }
+
+        if ((x > 375 && x < 425) && (y > 300 && y < 330))
+        {
+            cleardevice();
+            choiceLEVEL();
+        }
+        else if((x > 345 && x < 455) && (y > 340 && y < 370))
+        {
+            cleardevice();
+            HOWTOPLAY();
+
+            int back = getch();
+            switch(back)
+            {
+                default:
+                    {
+                        cleardevice();
+                        choiceMENU();
+                    }
+            }
+        }
+        else if((x > 345 && x < 455)&&(y > 380 && y < 410))
+        {
+            cleardevice();
+            HIGHSCORE();
+
+            int back = getch();
+            switch(back)
+            {
+                default:
+                    {
+                        cleardevice();
+                        choiceMENU();
+                    }
+            }
+        }
+        else if((x > 375 && x < 425)&&(y > 420 && y < 450))
+        {
+            cleardevice();
+            choiceEXIT();
+        }
+        else
+        {
+            goto Pos;
+        }
+}
+void choiceMENU(){
+    MENU();
+    cursorMENU();
+}
+void OPEN(){
 
     readimagefile("asset/Image/LOGO1.bmp", 250, 50, 550, 250); //kiri, atas, kanan,bawah
     //BUTTON
@@ -2437,6 +2553,57 @@ void drawchooseNO(){
 void drawchooseYES(){
     readimagefile("asset/Image/Button/CHOOSEYES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
     readimagefile("asset/Image/Button/NO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
+}
+void EXIT(){
+    outtextxy(340, 300, "( ARE YOU SURE ? )"); //x,y,texr
+    readimagefile("asset/Image/Button/NO.bmp", 350, 350, 400, 380); //kiri, atas, kanan,bawah
+    readimagefile("asset/Image/Button/YES.bmp", 410, 350, 460, 380); //kiri, atas, kanan,bawah
+}
+void cursorEXIT(){
+    int x = -1;
+    int y = -1;
+    int HovX = -1;
+    int HovY = -1;
+
+	bool IsMouseClicked = false;
+    Pos :
+        x=-1,y=-1,HovY=-1,HovX=-1;
+        IsMouseClicked = !IsMouseClicked;
+
+        while (!IsMouseClicked &&(x==-1 || y==-1))
+        {
+            IsMouseClicked = ismouseclick(WM_LBUTTONUP);
+            getmouseclick(WM_LBUTTONDOWN,x,y);
+            getmouseclick(WM_MOUSEMOVE,HovX,HovY);
+
+            if ((HovX > 350 && HovX < 400) && (HovY > 350 && HovY < 380))
+            {
+                drawchooseNO();
+            }
+            else if((HovX > 410 && HovX < 460) && (HovY > 350 && HovY < 380))
+            {
+                drawchooseYES();
+            }
+        }
+
+        if ((x > 350 && x < 400) && (y > 350 && y < 380))
+        {
+            cleardevice();
+            choiceMENU();
+        }
+        else if((x > 410 && x < 460) && (y > 350 && y < 380))
+        {
+            cleardevice();
+            exit(0);
+        }
+        else
+        {
+            goto Pos;
+        }
+}
+void choiceEXIT(){
+    EXIT();
+    cursorEXIT();
 }
 void EXITGAME(){
 
