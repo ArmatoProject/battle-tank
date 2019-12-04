@@ -1,5 +1,8 @@
-# Battle Tank
+# Armato 💥
 
-Deskripsi Game :
+## Introduction
+Armato is a shooter genre game based on the 90's "Battle Tank". The name **Armato** itself comes from the italian _carro armato_ which means _tank_ in english. The purpose of build this project is for learning data structure with c++ language, and working with team in project course in JTK Polban.
 
-Armato adalah sebuah game bergenre shooter yang dibuat berdasarkan game “Battle Tank” tahun 90an. Nama Armato sendiri berasal dari bahasa Italia “Carro Armato” yang artinya tank.
+With ♥️ from Ciwaruga
+
+🐳
